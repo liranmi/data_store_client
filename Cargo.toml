@@ -1,0 +1,9 @@
+[package]
+name = "data_store_client"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+async-trait = "0.1.50"
+redis = { version = "0.25.4", features = ["tokio-comp"] }
+tokio = { version = "1.38", features = ["full"] }

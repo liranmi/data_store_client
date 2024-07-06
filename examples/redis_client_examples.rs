@@ -4,7 +4,6 @@
 /// It covers various operations like connecting to a Redis server,
 /// setting and getting values, working with lists, and using hashes in an asynchronous context.
 use redis::AsyncCommands;
-use tokio;
 
 type RedisClient = redis::aio::MultiplexedConnection;
 /// Establish an asynchronous connection to the Redis server.

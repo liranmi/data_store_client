@@ -1,10 +1,10 @@
 use std::collections::HashMap;
 
 use async_trait::async_trait;
-use redis::Connection;
 
 use crate::{errors::ClientErrors, store_client::interface::StoreClient};
 
+#[allow(dead_code)]
 pub struct MockStoreClient {
     url: String,
     connection: Option<HashMap<String, String>>,
@@ -44,10 +44,10 @@ impl StoreClient for MockStoreClient {
         }
         return Err(ClientErrors::OtherError("Store is not available".into()));
     }
-    async fn append_to_list(&mut self, key: &str, value: &str) -> Result<(), ClientErrors> {
+    async fn append_to_list(&mut self, _key: &str, _value: &str) -> Result<(), ClientErrors> {
         todo!()
     }
-    async fn get_list(&mut self, key: &str) -> Result<Vec<String>, ClientErrors> {
+    async fn get_list(&mut self, _key: &str) -> Result<Vec<String>, ClientErrors> {
         todo!()
     }
 }
@@ -55,8 +55,6 @@ impl StoreClient for MockStoreClient {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use async_trait::async_trait;
-    use std::collections::HashMap;
 
     #[tokio::test]
     async fn test_open_connection() {

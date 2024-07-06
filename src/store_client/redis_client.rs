@@ -32,9 +32,12 @@ impl StoreClient for RedisStoreClient {
 
     async fn set_key_value(&mut self, key: &str, value: &str) -> Result<Option<()>, ClientErrors> {
         if let Some(ref mut con) = self.connection {
-            con.set(key, value).await?;
+            let _ = con.set(key, value).await?;
+            return Ok(Some(()));
         }
-        Ok(Some(()))
+        Err(ClientErrors::OtherError(
+            "Connection not established".into(),
+        ))
     }
 
     async fn get_key_value(&mut self, key: &str) -> Result<Option<String>, ClientErrors> {

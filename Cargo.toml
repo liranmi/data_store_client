@@ -4,6 +4,6 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-async-trait = "0.1.50"
-redis = { version = "0.25.4", features = ["tokio-comp"] }
-tokio = { version = "1.38", features = ["full"] }
+async-trait = "0.1.68"
+redis = { version = "0.26", features = ["tokio-comp"] }
+tokio = { version = "1.40", features = ["full"] }
